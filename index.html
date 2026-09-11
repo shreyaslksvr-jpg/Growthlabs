@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Underbrush — Field-tested clothing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1B2B22;
+    --forest-deep:#101913;
+    --panel:#223328;
+    --parchment:#EFE9D8;
+    --parchment-dim:#E6DFCB;
+    --ink:#151F19;
+    --sage:#93A48C;
+    --sage-dim:#5F7264;
+    --line:#3A4C3E;
+    --line-light:#D9D1B8;
+    --ochre:#B98A2E;
+    --ochre-soft:#D9B36C;
+    --serif: 'Fraunces', serif;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    background:var(--forest);
+    color:var(--parchment);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  input{font-family:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  :focus-visible{outline:2px solid var(--ochre-soft);outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(27,43,34,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 32px;max-width:1240px;margin:0 auto;
+  }
+  .logo{
+    font-family:var(--serif);
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:0.01em;
+  }
+  .logo span{color:var(--ochre-soft);}
+  .nav-links{display:flex;gap:36px;align-items:center;}
+  .nav-links a{
+    font-size:15px;color:var(--sage);
+    transition:color 0.2s ease;
+    position:relative;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--parchment);}
+  .nav-right{display:flex;align-items:center;gap:22px;}
+  .icon-btn{
+    display:flex;align-items:center;gap:8px;
+    font-size:14px;color:var(--parchment);
+  }
+  .cart-count{
+    font-family:var(--mono);
+    font-size:12px;
+    background:var(--ochre);
+    color:var(--forest-deep);
+    width:18px;height:18px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .menu-toggle{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:88px 32px 120px;
+    max-width:1240px;margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  .hero-copy{max-width:480px;}
+  .hero-kicker{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--sage);
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:22px;
+  }
+  .hero-kicker::before{
+    content:"";
+    width:22px;height:1px;
+    background:var(--sage-dim);
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-size:clamp(40px,5.4vw,64px);
+    font-weight:500;
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    margin-bottom:22px;
+  }
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--ochre-soft);}
+  .hero p{
+    font-size:16.5px;
+    line-height:1.65;
+    color:var(--sage);
+    margin-bottom:34px;
+    max-width:420px;
+  }
+  .hero-ctas{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--ochre);
+    color:var(--forest-deep);
+    padding:14px 26px;
+    font-size:15px;font-weight:500;
+    border-radius:2px;
+    transition:background 0.2s ease, transform 0.2s ease;
+    display:inline-block;
+  }
+  .btn-primary:hover, .btn-primary:focus-visible{background:var(--ochre-soft);transform:translateY(-1px);}
+  .btn-ghost{
+    font-size:15px;color:var(--parchment);
+    padding:14px 6px;
+    border-bottom:1px solid var(--sage-dim);
+    transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-ghost:hover, .btn-ghost:focus-visible{border-color:var(--ochre-soft);color:var(--ochre-soft);}
+
+  .hero-visual{
+    position:relative;
+    height:520px;
+  }
+  .hero-illustration{
+    width:100%;height:100%;
+  }
+  .hero-illustration path, .hero-illustration circle{
+    fill:none;
+    stroke:var(--sage-dim);
+    stroke-width:1.2;
+    stroke-dasharray:900;
+    stroke-dashoffset:900;
+    animation:draw 2.4s ease forwards 0.3s;
+  }
+  .hero-illustration .fill-shape{
+    fill:var(--panel);
+    stroke:none;
+    animation:none;
+    opacity:0;
+    animation:fadein 1s ease forwards 1.4s;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  @keyframes fadein{to{opacity:1;}}
+
+  .float-tag{
+    position:absolute;
+    bottom:26px;left:-18px;
+    background:var(--parchment);
+    color:var(--ink);
+    padding:18px 20px;
+    width:216px;
+    border-radius:3px;
+    box-shadow:0 24px 48px rgba(9,14,10,0.35);
+  }
+  .float-tag .swatch{
+    width:100%;height:64px;
+    border-radius:2px;
+    margin-bottom:12px;
+    background:
+      repeating-linear-gradient(135deg, #7C8F6D 0 6px, #6F8062 6px 12px);
+  }
+  .float-tag .name{font-family:var(--serif);font-size:16px;margin-bottom:4px;}
+  .float-tag .meta{
+    font-family:var(--mono);font-size:11.5px;color:var(--sage-dim);
+    display:flex;justify-content:space-between;
+  }
+
+  /* ---------- Category strip ---------- */
+  .strip{
+    background:var(--parchment);
+    color:var(--ink);
+    border-top:1px solid var(--line-light);
+    border-bottom:1px solid var(--line-light);
+  }
+  .strip-row{
+    display:flex;
+    max-width:1240px;margin:0 auto;
+  }
+  .strip-item{
+    flex:1;
+    padding:26px 24px;
+    border-right:1px solid var(--line-light);
+    transition:background 0.2s ease;
+  }
+  .strip-item:last-child{border-right:none;}
+  .strip-item:hover{background:var(--parchment-dim);}
+  .strip-item a{display:block;}
+  .strip-item .cat-name{
+    font-family:var(--serif);
+    font-size:19px;
+    margin-bottom:4px;
+  }
+  .strip-item .cat-count{
+    font-family:var(--mono);
+    font-size:12px;
+    color:#7A7460;
+  }
+
+  /* ---------- Product grid ---------- */
+  .section-light{background:var(--parchment);color:var(--ink);padding:96px 0;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-bottom:48px;
+    max-width:1240px;margin-left:auto;margin-right:auto;
+    padding:0 32px;
+    gap:24px;flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-family:var(--serif);
+    font-size:clamp(28px,3vw,38px);
+    font-weight:500;
+    max-width:460px;
+  }
+  .section-head p{
+    color:#736C57;
+    font-size:15px;
+    max-width:320px;
+    line-height:1.6;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-auto-rows:220px;
+    gap:2px;
+    background:var(--line-light);
+    max-width:1240px;margin:0 auto;
+    padding:0 32px;
+  }
+  .card{
+    background:var(--parchment);
+    position:relative;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .card.tall{grid-row:span 2;}
+  .card-visual{
+    flex:1;
+    position:relative;
+  }
+  .card-visual.tex-1{background:linear-gradient(160deg,#3D4F3A 0%,#5C7052 55%,#8B9A73 100%);}
+  .card-visual.tex-2{background:linear-gradient(160deg,#4A3A2B 0%,#8A6A3E 55%,#D9B36C 100%);}
+  .card-visual.tex-3{background:linear-gradient(160deg,#33403A 0%,#5F7264 60%,#93A48C 100%);}
+  .card-visual.tex-4{background:linear-gradient(160deg,#443A2E 0%,#71614A 55%,#B7A784 100%);}
+  .card-visual::after{
+    content:"";
+    position:absolute;inset:0;
+    background:repeating-linear-gradient(115deg, rgba(255,255,255,0.06) 0 3px, transparent 3px 9px);
+  }
+  .quick-add{
+    position:absolute;right:14px;bottom:14px;
+    background:var(--forest-deep);
+    color:var(--parchment);
+    font-size:12.5px;font-family:var(--mono);
+    padding:9px 14px;border-radius:2px;
+    opacity:0;transform:translateY(6px);
+    transition:opacity 0.2s ease, transform 0.2s ease;
+  }
+  .card:hover .quick-add, .card:focus-within .quick-add{opacity:1;transform:translateY(0);}
+  .card-info{
+    padding:16px 18px 18px;
+    display:flex;justify-content:space-between;align-items:flex-start;
+    gap:10px;
+  }
+  .card-info .name{font-family:var(--serif);font-size:17px;margin-bottom:5px;}
+  .card-info .code{font-family:var(--mono);font-size:11.5px;color:#8A8264;}
+  .card-info .price{font-family:var(--mono);font-size:14px;white-space:nowrap;padding-top:2px;}
+
+  /* ---------- Editorial ---------- */
+  .editorial{
+    background:var(--forest-deep);
+    padding:110px 0;
+  }
+  .editorial-grid{
+    max-width:1240px;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:1.1fr 0.9fr;
+    gap:64px;align-items:start;
+  }
+  .editorial blockquote{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(26px,3.2vw,38px);
+    line-height:1.32;
+    color:var(--parchment);
+  }
+  .editorial blockquote cite{
+    display:block;
+    font-style:normal;
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--sage-dim);
+    margin-top:24px;
+  }
+  .editorial-side p{
+    color:var(--sage);
+    font-size:15.5px;
+    line-height:1.75;
+    margin-bottom:28px;
+  }
+  .fact-list{border-top:1px solid var(--line);}
+  .fact-list li{
+    display:flex;justify-content:space-between;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .fact-list li span:first-child{color:var(--sage);}
+  .fact-list li span:last-child{font-family:var(--mono);color:var(--parchment);}
+
+  /* ---------- Best sellers ---------- */
+  .bestsellers{background:var(--parchment);color:var(--ink);padding:96px 0 100px;}
+  .scroll-row{
+    display:flex;gap:20px;
+    overflow-x:auto;
+    padding:0 32px 12px;
+    max-width:1240px;margin:0 auto;
+    scrollbar-width:thin;
+  }
+  .mini-card{
+    flex:0 0 240px;
+    background:var(--parchment);
+  }
+  .mini-visual{
+    height:280px;border-radius:2px;margin-bottom:14px;
+    position:relative;overflow:hidden;
+  }
+  .mini-visual::after{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(115deg, rgba(255,255,255,0.06) 0 3px, transparent 3px 9px);
+  }
+  .mv-a{background:linear-gradient(165deg,#5C7052,#93A48C);}
+  .mv-b{background:linear-gradient(165deg,#71614A,#D9B36C);}
+  .mv-c{background:linear-gradient(165deg,#3D4F3A,#7C8F6D);}
+  .mini-card .name{font-family:var(--serif);font-size:16px;margin-bottom:4px;}
+  .mini-card .row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12.5px;color:#7A7460;}
+
+  /* ---------- Newsletter ---------- */
+  .newsletter{
+    background:var(--panel);
+    padding:80px 32px;
+    text-align:center;
+  }
+  .newsletter-inner{max-width:520px;margin:0 auto;}
+  .newsletter h3{
+    font-family:var(--serif);
+    font-size:clamp(26px,3vw,34px);
+    margin-bottom:14px;
+  }
+  .newsletter p{color:var(--sage);font-size:15px;margin-bottom:30px;line-height:1.6;}
+  .newsletter-form{
+    display:flex;gap:0;
+    border-bottom:1px solid var(--sage-dim);
+    padding-bottom:12px;
+  }
+  .newsletter-form input{
+    flex:1;background:none;border:none;color:var(--parchment);
+    font-size:15px;padding:6px 4px;
+  }
+  .newsletter-form input::placeholder{color:var(--sage-dim);}
+  .newsletter-form button{
+    font-family:var(--mono);font-size:13px;color:var(--ochre-soft);
+    padding:6px 8px;white-space:nowrap;
+    transition:color 0.2s ease;
+  }
+  .newsletter-form button:hover{color:var(--parchment);}
+  .newsletter-note{font-family:var(--mono);font-size:11.5px;color:var(--sage-dim);margin-top:16px;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--forest-deep);padding:72px 32px 28px;}
+  .footer-grid{
+    max-width:1240px;margin:0 auto;
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:56px;
+    border-bottom:1px solid var(--line);
+  }
+  .footer-brand .logo{margin-bottom:16px;}
+  .footer-brand p{color:var(--sage-dim);font-size:14px;line-height:1.6;max-width:260px;}
+  .footer-col h4{
+    font-size:13px;color:var(--sage);
+    margin-bottom:18px;font-weight:500;
+  }
+  .footer-col ul li{margin-bottom:11px;}
+  .footer-col ul li a{color:var(--sage-dim);font-size:14px;transition:color 0.2s ease;}
+  .footer-col ul li a:hover{color:var(--parchment);}
+  .footer-bottom{
+    max-width:1240px;margin:0 auto;
+    padding-top:24px;
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:12px;
+  }
+  .footer-bottom p{font-family:var(--mono);font-size:12px;color:var(--sage-dim);}
+  .footer-social{display:flex;gap:20px;}
+  .footer-social a{font-family:var(--mono);font-size:12px;color:var(--sage-dim);}
+  .footer-social a:hover{color:var(--parchment);}
+
+  /* ---------- Cart drawer ---------- */
+  .cart-drawer{
+    position:fixed;top:0;right:0;height:100vh;width:380px;
+    background:var(--forest);
+    border-left:1px solid var(--line);
+    z-index:200;
+    transform:translateX(100%);
+    transition:transform 0.35s ease;
+    display:flex;flex-direction:column;
+  }
+  .cart-drawer.open{transform:translateX(0);}
+  .cart-head{
+    padding:26px 26px 18px;
+    display:flex;justify-content:space-between;align-items:center;
+    border-bottom:1px solid var(--line);
+  }
+  .cart-head h3{font-family:var(--serif);font-size:20px;}
+  .cart-close{font-size:22px;color:var(--sage);}
+  .cart-body{flex:1;padding:26px;color:var(--sage);font-size:14.5px;line-height:1.7;}
+  .cart-overlay{
+    position:fixed;inset:0;background:rgba(9,14,10,0.5);
+    z-index:150;opacity:0;pointer-events:none;transition:opacity 0.3s ease;
+  }
+  .cart-overlay.open{opacity:1;pointer-events:auto;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .menu-toggle{display:block;font-size:14px;font-family:var(--mono);}
+    .hero{grid-template-columns:1fr;padding-top:56px;}
+    .hero-visual{height:340px;order:-1;}
+    .strip-row{flex-wrap:wrap;}
+    .strip-item{flex:0 0 50%;border-bottom:1px solid var(--line-light);}
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .card.tall{grid-row:span 1;}
+    .editorial-grid{grid-template-columns:1fr;gap:40px;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#" class="logo">Under<span>brush</span></a>
+    <ul class="nav-links">
+      <li><a href="#collection">Shop</a></li>
+      <li><a href="#story">Materials</a></li>
+      <li><a href="#bestsellers">Best sellers</a></li>
+      <li><a href="#">Journal</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="icon-btn menu-toggle" aria-label="Menu">Menu</button>
+      <button class="icon-btn" id="cartOpen" aria-haspopup="true">
+        Bag <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="hero-kicker">Autumn / Winter field kit</p>
+      <h1>Clothing built for <em>undergrowth</em>, worn through the city</h1>
+      <p>Weatherproof shells, brushed-cotton layers and packable knits, cut from fabrics that were tested on trail before they ever reached a rack.</p>
+      <div class="hero-ctas">
+        <a href="#collection" class="btn-primary">Shop the collection</a>
+        <a href="#story" class="btn-ghost">Read about the fabric</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="hero-illustration" viewBox="0 0 460 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M60 480 C 60 380, 40 340, 80 260 C 110 200, 90 140, 140 80 C 170 45, 220 30, 260 40" />
+        <path d="M100 480 C 130 420, 120 360, 160 300 C 190 255, 180 200, 220 150" />
+        <path d="M260 40 C 300 20, 350 30, 370 70" />
+        <circle cx="370" cy="90" r="6" />
+        <path d="M140 200 C 170 190, 190 170, 185 145" />
+        <path d="M120 320 C 150 315, 165 295, 158 270" />
+        <rect class="fill-shape" x="230" y="330" width="150" height="190" rx="2"/>
+      </svg>
+      <div class="float-tag">
+        <div class="swatch"></div>
+        <div class="name">Ridge Anorak</div>
+        <div class="meta"><span>UB-014 / OLV</span><span>$228</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY STRIP -->
+  <section class="strip">
+    <div class="strip-row">
+      <div class="strip-item"><a href="#"><div class="cat-name">Outerwear</div><div class="cat-count">24 pieces</div></a></div>
+      <div class="strip-item"><a href="#"><div class="cat-name">Base layers</div><div class="cat-count">18 pieces</div></a></div>
+      <div class="strip-item"><a href="#"><div class="cat-name">Trail &amp; pack</div><div class="cat-count">11 pieces</div></a></div>
+      <div class="strip-item"><a href="#"><div class="cat-name">Accessories</div><div class="cat-count">27 pieces</div></a></div>
+    </div>
+  </section>
+
+  <!-- PRODUCT GRID -->
+  <section class="section-light" id="collection">
+    <div class="section-head">
+      <h2>Field-tested this season</h2>
+      <p>Each piece is worn on actual terrain for a full season before it's approved for production.</p>
+    </div>
+    <div class="grid">
+      <div class="card tall">
+        <div class="card-visual tex-1">
+          <button class="quick-add" data-name="Ridge Anorak" data-price="228">Add to bag — $228</button>
+        </div>
+        <div class="card-info">
+          <div><div class="name">Ridge Anorak</div><div class="code">UB-014 / Olive</div></div>
+          <div class="price">$228</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-visual tex-2">
+          <button class="quick-add" data-name="Brushed Flannel Shirt" data-price="94">Add to bag — $94</button>
+        </div>
+        <div class="card-info">
+          <div><div class="name">Brushed Flannel Shirt</div><div class="code">UB-027 / Clay</div></div>
+          <div class="price">$94</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-visual tex-3">
+          <button class="quick-add" data-name="Moss Wool Sweater" data-price="132">Add to bag — $132</button>
+        </div>
+        <div class="card-info">
+          <div><div class="name">Moss Wool Sweater</div><div class="code">UB-031 / Fern</div></div>
+          <div class="price">$132</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-visual tex-4">
+          <button class="quick-add" data-name="Canvas Field Pant" data-price="118">Add to bag — $118</button>
+        </div>
+        <div class="card-info">
+          <div><div class="name">Canvas Field Pant</div><div class="code">UB-009 / Sand</div></div>
+          <div class="price">$118</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-visual tex-3">
+          <button class="quick-add" data-name="Packable Vest" data-price="86">Add to bag — $86</button>
+        </div>
+        <div class="card-info">
+          <div><div class="name">Packable Vest</div><div class="code">UB-042 / Fern</div></div>
+          <div class="price">$86</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-visual tex-2">
+          <button class="quick-add" data-name="Waxed Trail Cap" data-price="42">Add to bag — $42</button>
+        </div>
+        <div class="card-info">
+          <div><div class="name">Waxed Trail Cap</div><div class="code">UB-055 / Clay</div></div>
+          <div class="price">$42</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITORIAL -->
+  <section class="editorial" id="story">
+    <div class="editorial-grid">
+      <blockquote>
+        "We stopped calling it activewear the day we realized most of it never left the office."
+        <cite>— Founding note, 2016</cite>
+      </blockquote>
+      <div class="editorial-side">
+        <p>Underbrush started as a two-person pattern shop making shells for a trail-running club that kept complaining about everything on the market. Nine years later, the brief hasn't changed: make it work in real weather first, and let it look good as a result of that, not instead of it.</p>
+        <ul class="fact-list">
+          <li><span>Recycled shell fabric</span><span>78%</span></li>
+          <li><span>Garments field-tested</span><span>100%</span></li>
+          <li><span>Repair program</span><span>Lifetime</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEST SELLERS -->
+  <section class="bestsellers" id="bestsellers">
+    <div class="section-head">
+      <h2>What people keep reordering</h2>
+      <p>The pieces that come back into every seasonal drop, by request.</p>
+    </div>
+    <div class="scroll-row">
+      <div class="mini-card">
+        <div class="mini-visual mv-a"></div>
+        <div class="name">Trailhead Fleece</div>
+        <div class="row"><span>UB-061</span><span>$118</span></div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-visual mv-b"></div>
+        <div class="name">Dune Chino</div>
+        <div class="row"><span>UB-019</span><span>$104</span></div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-visual mv-c"></div>
+        <div class="name">Understory Jacket</div>
+        <div class="row"><span>UB-003</span><span>$246</span></div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-visual mv-a"></div>
+        <div class="name">Ridge Beanie</div>
+        <div class="row"><span>UB-071</span><span>$34</span></div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-visual mv-b"></div>
+        <div class="name">Camp Overshirt</div>
+        <div class="row"><span>UB-024</span><span>$98</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="newsletter-inner">
+      <h3>Get word before a drop sells out</h3>
+      <p>One email a month. Early access to restocks, and the occasional fabric note from the workshop.</p>
+      <form class="newsletter-form" id="newsForm">
+        <input type="email" placeholder="you@email.com" required aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="newsletter-note" id="newsNote">No spam. Unsubscribe any time.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">Under<span>brush</span></a>
+      <p>Weatherproof clothing designed on trail and finished in a small workshop, one season at a time.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">Outerwear</a></li>
+        <li><a href="#">Base layers</a></li>
+        <li><a href="#">Trail &amp; pack</a></li>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">Sale</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#">Sizing guide</a></li>
+        <li><a href="#">Shipping &amp; returns</a></li>
+        <li><a href="#">Repair program</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Journal</a></li>
+        <li><a href="#">Materials</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Underbrush Workshop. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="#">Instagram</a>
+      <a href="#">Journal</a>
+      <a href="#">Pinterest</a>
+    </div>
+  </div>
+</footer>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-head">
+    <h3>Your bag</h3>
+    <button class="cart-close" id="cartClose" aria-label="Close bag">&times;</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    Your bag is empty. Add a piece from the collection to see it here.
+  </div>
+</div>
+
+<script>
+  // Cart drawer
+  const cartOpen = document.getElementById('cartOpen');
+  const cartClose = document.getElementById('cartClose');
+  const cartDrawer = document.getElementById('cartDrawer');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const cartCount = document.getElementById('cartCount');
+  const cartBody = document.getElementById('cartBody');
+  let items = [];
+
+  function openCart(){
+    cartDrawer.classList.add('open');
+    cartOverlay.classList.add('open');
+    cartDrawer.setAttribute('aria-hidden','false');
+  }
+  function closeCart(){
+    cartDrawer.classList.remove('open');
+    cartOverlay.classList.remove('open');
+    cartDrawer.setAttribute('aria-hidden','true');
+  }
+  cartOpen.addEventListener('click', openCart);
+  cartClose.addEventListener('click', closeCart);
+  cartOverlay.addEventListener('click', closeCart);
+
+  function renderCart(){
+    cartCount.textContent = items.length;
+    if(items.length === 0){
+      cartBody.innerHTML = "Your bag is empty. Add a piece from the collection to see it here.";
+      return;
+    }
+    const total = items.reduce((sum, i) => sum + i.price, 0);
+    cartBody.innerHTML = items.map(i =>
+      `<div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);">
+        <span>${i.name}</span><span style="font-family:var(--mono)">$${i.price}</span>
+      </div>`
+    ).join('') + `<div style="display:flex;justify-content:space-between;padding-top:18px;font-family:var(--mono);color:var(--parchment)">
+        <span>Subtotal</span><span>$${total}</span>
+      </div>`;
+  }
+
+  document.querySelectorAll('.quick-add').forEach(btn => {
+    btn.addEventListener('click', () => {
+      items.push({ name: btn.dataset.name, price: Number(btn.dataset.price) });
+      renderCart();
+      openCart();
+    });
+  });
+
+  // Newsletter
+  const newsForm = document.getElementById('newsForm');
+  const newsNote = document.getElementById('newsNote');
+  newsForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    newsNote.textContent = "You're on the list. First note lands next drop.";
+    newsForm.querySelector('input').value = '';
+  });
+</script>
+
+</body>
+</html>
