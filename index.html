@@ -1,790 +1,969 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-E8M7NTCRZ2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-E8M7NTCRZ2');
-</script>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KT6QS7RZ');</script>
-<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Underbrush — Field-tested clothing</title>
+<title>AMBLE — Clothing built for the everyday</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --forest:#1B2B22;
-    --forest-deep:#101913;
-    --panel:#223328;
-    --parchment:#EFE9D8;
-    --parchment-dim:#E6DFCB;
-    --ink:#151F19;
-    --sage:#93A48C;
-    --sage-dim:#5F7264;
-    --line:#3A4C3E;
-    --line-light:#D9D1B8;
-    --ochre:#B98A2E;
-    --ochre-soft:#D9B36C;
-    --serif: 'Fraunces', serif;
-    --sans: 'IBM Plex Sans', sans-serif;
-    --mono: 'IBM Plex Mono', monospace;
+    --ink:#20241F;
+    --bone:#EFEAE0;
+    --bone-2:#E6DFD1;
+    --moss:#4A5A45;
+    --moss-dark:#333F30;
+    --clay:#9C5A3C;
+    --sand:#C6BCA6;
+    --white:#FBF9F4;
+    --line: rgba(32,36,31,0.16);
+    --err:#A33B2B;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
+  *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    font-family:var(--sans);
-    background:var(--forest);
-    color:var(--parchment);
+    background:var(--bone);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.5;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
   }
-  img,svg{display:block;max-width:100%;}
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
   a{color:inherit;text-decoration:none;}
-  ul{list-style:none;}
-  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
-  input{font-family:inherit;}
-  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
-  :focus-visible{outline:2px solid var(--ochre-soft);outline-offset:3px;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 40px;}
+  button{font-family:inherit;cursor:pointer;}
+  input,select{font-family:inherit;}
+
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
+    outline:2px solid var(--moss-dark);
+    outline-offset:3px;
+  }
   @media (prefers-reduced-motion: reduce){
-    *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
   }
 
   /* ---------- Header ---------- */
   header{
-    position:sticky;top:0;z-index:100;
-    background:rgba(27,43,34,0.92);
-    backdrop-filter:blur(8px);
+    position:sticky; top:0; z-index:50;
+    background:var(--bone);
     border-bottom:1px solid var(--line);
   }
   .nav{
     display:flex;align-items:center;justify-content:space-between;
-    padding:20px 32px;max-width:1240px;margin:0 auto;
+    padding:22px 40px;
+    max-width:1240px;margin:0 auto;
   }
   .logo{
-    font-family:var(--serif);
+    font-family:'Fraunces', serif;
     font-size:22px;
     font-weight:600;
-    letter-spacing:0.01em;
+    letter-spacing:0.02em;
+    background:none;border:none;color:var(--ink);
   }
-  .logo span{color:var(--ochre-soft);}
-  .nav-links{display:flex;gap:36px;align-items:center;}
+  .nav-links{ display:flex;gap:34px; font-size:15px; }
   .nav-links a{
-    font-size:15px;color:var(--sage);
-    transition:color 0.2s ease;
-    position:relative;
+    position:relative; padding-bottom:3px;
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease;
+    background:none;border:none;font-size:15px;color:var(--ink);
   }
-  .nav-links a:hover, .nav-links a:focus-visible{color:var(--parchment);}
-  .nav-right{display:flex;align-items:center;gap:22px;}
-  .icon-btn{
-    display:flex;align-items:center;gap:8px;
-    font-size:14px;color:var(--parchment);
+  .nav-links a:hover{ border-color:var(--ink); }
+  .nav-right{ display:flex;align-items:center;gap:26px; font-size:15px; }
+  .nav-right button{background:none;border:none;color:var(--ink);font-size:15px;}
+  .bag{
+    display:flex;align-items:center;gap:6px;
+    border:1px solid var(--ink);
+    padding:8px 14px;
+    border-radius:2px;
+    font-size:14px;
   }
-  .cart-count{
-    font-family:var(--mono);
-    font-size:12px;
-    background:var(--ochre);
-    color:var(--forest-deep);
-    width:18px;height:18px;
-    border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .menu-toggle{display:none;}
+
+  /* ---------- Views ---------- */
+  .view{ display:none; }
+  .view.active{ display:block; }
 
   /* ---------- Hero ---------- */
   .hero{
-    position:relative;
-    padding:88px 32px 120px;
-    max-width:1240px;margin:0 auto;
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    align-items:center;
+    grid-template-columns:1.1fr 0.9fr;
+    align-items:stretch;
+    border-bottom:1px solid var(--line);
   }
-  .hero-copy{max-width:480px;}
-  .hero-kicker{
-    font-family:var(--mono);
-    font-size:13px;
-    color:var(--sage);
-    display:flex;align-items:center;gap:10px;
-    margin-bottom:22px;
+  .hero-copy{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:80px 60px 80px 40px;
+    max-width:560px;
   }
-  .hero-kicker::before{
-    content:"";
-    width:22px;height:1px;
-    background:var(--sage-dim);
-  }
-  .hero h1{
-    font-family:var(--serif);
-    font-size:clamp(40px,5.4vw,64px);
-    font-weight:500;
-    line-height:1.04;
-    letter-spacing:-0.01em;
-    margin-bottom:22px;
-  }
-  .hero h1 em{font-style:italic;font-weight:400;color:var(--ochre-soft);}
-  .hero p{
-    font-size:16.5px;
-    line-height:1.65;
-    color:var(--sage);
-    margin-bottom:34px;
-    max-width:420px;
-  }
+  .hero-kicker{ font-size:14px; color:var(--moss-dark); margin-bottom:20px; }
+  .hero h1{ font-size:clamp(40px, 5vw, 62px); line-height:1.04; margin-bottom:26px; }
+  .hero p{ font-size:17px; max-width:420px; color:#42473F; margin-bottom:34px; }
   .hero-ctas{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
   .btn-primary{
-    background:var(--ochre);
-    color:var(--forest-deep);
-    padding:14px 26px;
-    font-size:15px;font-weight:500;
-    border-radius:2px;
-    transition:background 0.2s ease, transform 0.2s ease;
+    background:var(--ink); color:var(--white); padding:14px 26px; font-size:15px;
+    border:1px solid var(--ink); border-radius:2px;
+    transition:background .2s ease, color .2s ease;
     display:inline-block;
   }
-  .btn-primary:hover, .btn-primary:focus-visible{background:var(--ochre-soft);transform:translateY(-1px);}
-  .btn-ghost{
-    font-size:15px;color:var(--parchment);
-    padding:14px 6px;
-    border-bottom:1px solid var(--sage-dim);
-    transition:border-color 0.2s ease, color 0.2s ease;
-  }
-  .btn-ghost:hover, .btn-ghost:focus-visible{border-color:var(--ochre-soft);color:var(--ochre-soft);}
+  .btn-primary:hover{background:transparent; color:var(--ink);}
+  .btn-primary:disabled{ opacity:0.45; cursor:not-allowed; }
+  .btn-secondary{ font-size:15px; padding-bottom:3px; background:none;border:none;border-bottom:1px solid var(--ink); color:var(--ink);}
+  .hero-media{ position:relative; overflow:hidden; background:var(--sand); min-height:520px; }
+  .hero-media img{ width:100%;height:100%;object-fit:cover; }
+  .hero-tag{ position:absolute; left:24px; bottom:24px; background:var(--bone); padding:10px 16px; font-size:13px; border-radius:2px; max-width:220px; }
 
-  .hero-visual{
-    position:relative;
-    height:520px;
-  }
-  .hero-illustration{
-    width:100%;height:100%;
-  }
-  .hero-illustration path, .hero-illustration circle{
-    fill:none;
-    stroke:var(--sage-dim);
-    stroke-width:1.2;
-    stroke-dasharray:900;
-    stroke-dashoffset:900;
-    animation:draw 2.4s ease forwards 0.3s;
-  }
-  .hero-illustration .fill-shape{
-    fill:var(--panel);
-    stroke:none;
-    animation:none;
-    opacity:0;
-    animation:fadein 1s ease forwards 1.4s;
-  }
-  @keyframes draw{to{stroke-dashoffset:0;}}
-  @keyframes fadein{to{opacity:1;}}
+  /* ---------- Strip ---------- */
+  .strip{ border-bottom:1px solid var(--line); background:var(--moss-dark); color:var(--bone); overflow:hidden; white-space:nowrap; }
+  .strip-inner{ display:inline-flex; animation:scroll 28s linear infinite; padding:14px 0; font-size:14px; }
+  .strip-inner span{ padding:0 28px; }
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  @media (prefers-reduced-motion: reduce){ .strip-inner{animation:none;} }
 
-  .float-tag{
-    position:absolute;
-    bottom:26px;left:-18px;
-    background:var(--parchment);
-    color:var(--ink);
-    padding:18px 20px;
-    width:216px;
-    border-radius:3px;
-    box-shadow:0 24px 48px rgba(9,14,10,0.35);
-  }
-  .float-tag .swatch{
-    width:100%;height:64px;
-    border-radius:2px;
-    margin-bottom:12px;
-    background:
-      repeating-linear-gradient(135deg, #7C8F6D 0 6px, #6F8062 6px 12px);
-  }
-  .float-tag .name{font-family:var(--serif);font-size:16px;margin-bottom:4px;}
-  .float-tag .meta{
-    font-family:var(--mono);font-size:11.5px;color:var(--sage-dim);
-    display:flex;justify-content:space-between;
-  }
-
-  /* ---------- Category strip ---------- */
-  .strip{
-    background:var(--parchment);
-    color:var(--ink);
-    border-top:1px solid var(--line-light);
-    border-bottom:1px solid var(--line-light);
-  }
-  .strip-row{
-    display:flex;
-    max-width:1240px;margin:0 auto;
-  }
-  .strip-item{
-    flex:1;
-    padding:26px 24px;
-    border-right:1px solid var(--line-light);
-    transition:background 0.2s ease;
-  }
-  .strip-item:last-child{border-right:none;}
-  .strip-item:hover{background:var(--parchment-dim);}
-  .strip-item a{display:block;}
-  .strip-item .cat-name{
-    font-family:var(--serif);
-    font-size:19px;
-    margin-bottom:4px;
-  }
-  .strip-item .cat-count{
-    font-family:var(--mono);
-    font-size:12px;
-    color:#7A7460;
-  }
+  section{padding:88px 0;}
+  .section-head{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:44px; gap:24px; flex-wrap:wrap; }
+  .section-head h2{ font-size:clamp(28px,3vw,36px); }
+  .section-head p{ max-width:340px; color:#4B5045; font-size:15px; }
 
   /* ---------- Product grid ---------- */
-  .section-light{background:var(--parchment);color:var(--ink);padding:96px 0;}
-  .section-head{
-    display:flex;justify-content:space-between;align-items:flex-end;
-    margin-bottom:48px;
-    max-width:1240px;margin-left:auto;margin-right:auto;
-    padding:0 32px;
-    gap:24px;flex-wrap:wrap;
+  .grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:2px; background:var(--line); border:1px solid var(--line); }
+  .card{ background:var(--bone); display:flex;flex-direction:column; }
+  .card-media{ position:relative; aspect-ratio:3/4; overflow:hidden; background:var(--sand); }
+  .card-media img{ width:100%;height:100%;object-fit:cover; transition:transform .5s ease; }
+  .card:hover .card-media img{transform:scale(1.04);}
+  .card-body{ padding:18px 18px 24px; display:flex;flex-direction:column;gap:4px; }
+  .card-name{font-size:15.5px; font-weight:500; background:none; border:none; text-align:left; color:var(--ink); padding:0;}
+  .card-name:hover{ text-decoration:underline; }
+  .card-meta{font-size:13px; color:#6B6F62;}
+  .card-price{font-size:14.5px; margin-top:6px;}
+  .card-add{
+    margin-top:12px; font-size:13.5px; padding:9px 14px;
+    border:1px solid var(--ink); background:transparent; border-radius:2px;
+    align-self:flex-start; transition:background .2s ease,color .2s ease;
   }
-  .section-head h2{
-    font-family:var(--serif);
-    font-size:clamp(28px,3vw,38px);
-    font-weight:500;
-    max-width:460px;
-  }
-  .section-head p{
-    color:#736C57;
-    font-size:15px;
-    max-width:320px;
-    line-height:1.6;
-  }
+  .card-add:hover{ background:var(--ink); color:var(--white); }
+  @media (max-width:980px){ .grid{grid-template-columns:repeat(2,1fr);} }
 
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    grid-auto-rows:220px;
-    gap:2px;
-    background:var(--line-light);
-    max-width:1240px;margin:0 auto;
-    padding:0 32px;
-  }
-  .card{
-    background:var(--parchment);
-    position:relative;
-    overflow:hidden;
-    display:flex;flex-direction:column;
-  }
-  .card.tall{grid-row:span 2;}
-  .card-visual{
-    flex:1;
-    position:relative;
-  }
-  .card-visual.tex-1{background:linear-gradient(160deg,#3D4F3A 0%,#5C7052 55%,#8B9A73 100%);}
-  .card-visual.tex-2{background:linear-gradient(160deg,#4A3A2B 0%,#8A6A3E 55%,#D9B36C 100%);}
-  .card-visual.tex-3{background:linear-gradient(160deg,#33403A 0%,#5F7264 60%,#93A48C 100%);}
-  .card-visual.tex-4{background:linear-gradient(160deg,#443A2E 0%,#71614A 55%,#B7A784 100%);}
-  .card-visual::after{
-    content:"";
-    position:absolute;inset:0;
-    background:repeating-linear-gradient(115deg, rgba(255,255,255,0.06) 0 3px, transparent 3px 9px);
-  }
-  .quick-add{
-    position:absolute;right:14px;bottom:14px;
-    background:var(--forest-deep);
-    color:var(--parchment);
-    font-size:12.5px;font-family:var(--mono);
-    padding:9px 14px;border-radius:2px;
-    opacity:0;transform:translateY(6px);
-    transition:opacity 0.2s ease, transform 0.2s ease;
-  }
-  .card:hover .quick-add, .card:focus-within .quick-add{opacity:1;transform:translateY(0);}
-  .card-info{
-    padding:16px 18px 18px;
-    display:flex;justify-content:space-between;align-items:flex-start;
-    gap:10px;
-  }
-  .card-info .name{font-family:var(--serif);font-size:17px;margin-bottom:5px;}
-  .card-info .code{font-family:var(--mono);font-size:11.5px;color:#8A8264;}
-  .card-info .price{font-family:var(--mono);font-size:14px;white-space:nowrap;padding-top:2px;}
+  /* ---------- Editorial split ---------- */
+  .split{ display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .split-media{ min-height:460px; background:var(--sand); overflow:hidden; }
+  .split-media img{width:100%;height:100%;object-fit:cover;}
+  .split-copy{ padding:70px 60px; display:flex;flex-direction:column;justify-content:center; background:var(--white); }
+  .split-copy .num{ font-size:13px; color:var(--clay); margin-bottom:18px; }
+  .split-copy h3{ font-size:32px; margin-bottom:18px; line-height:1.15; }
+  .split-copy p{ color:#4B5045; max-width:420px; margin-bottom:26px; }
+  @media (max-width:900px){ .split{grid-template-columns:1fr;} .split-copy{padding:50px 32px;} }
 
-  /* ---------- Editorial ---------- */
-  .editorial{
-    background:var(--forest-deep);
-    padding:110px 0;
-  }
-  .editorial-grid{
-    max-width:1240px;margin:0 auto;padding:0 32px;
-    display:grid;grid-template-columns:1.1fr 0.9fr;
-    gap:64px;align-items:start;
-  }
-  .editorial blockquote{
-    font-family:var(--serif);
-    font-style:italic;
-    font-weight:400;
-    font-size:clamp(26px,3.2vw,38px);
-    line-height:1.32;
-    color:var(--parchment);
-  }
-  .editorial blockquote cite{
-    display:block;
-    font-style:normal;
-    font-family:var(--mono);
-    font-size:13px;
-    color:var(--sage-dim);
-    margin-top:24px;
-  }
-  .editorial-side p{
-    color:var(--sage);
-    font-size:15.5px;
-    line-height:1.75;
-    margin-bottom:28px;
-  }
-  .fact-list{border-top:1px solid var(--line);}
-  .fact-list li{
-    display:flex;justify-content:space-between;
-    padding:14px 0;
-    border-bottom:1px solid var(--line);
-    font-size:14px;
-  }
-  .fact-list li span:first-child{color:var(--sage);}
-  .fact-list li span:last-child{font-family:var(--mono);color:var(--parchment);}
+  .materials{ background:var(--moss-dark); color:var(--bone); }
+  .materials .wrap{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:50px; }
+  .materials h2{ color:var(--bone); grid-column:1 / -1; font-size:30px; max-width:520px; margin-bottom:6px; }
+  .mat-item{ border-top:1px solid rgba(239,234,224,0.25); padding-top:20px; }
+  .mat-item .mat-label{ font-size:13px; color:var(--sand); margin-bottom:10px; }
+  .mat-item p{ font-size:15px; color:#E4DFD2; }
+  @media (max-width:900px){ .materials .wrap{grid-template-columns:1fr;} }
 
-  /* ---------- Best sellers ---------- */
-  .bestsellers{background:var(--parchment);color:var(--ink);padding:96px 0 100px;}
-  .scroll-row{
-    display:flex;gap:20px;
-    overflow-x:auto;
-    padding:0 32px 12px;
-    max-width:1240px;margin:0 auto;
-    scrollbar-width:thin;
-  }
-  .mini-card{
-    flex:0 0 240px;
-    background:var(--parchment);
-  }
-  .mini-visual{
-    height:280px;border-radius:2px;margin-bottom:14px;
-    position:relative;overflow:hidden;
-  }
-  .mini-visual::after{
-    content:"";position:absolute;inset:0;
-    background:repeating-linear-gradient(115deg, rgba(255,255,255,0.06) 0 3px, transparent 3px 9px);
-  }
-  .mv-a{background:linear-gradient(165deg,#5C7052,#93A48C);}
-  .mv-b{background:linear-gradient(165deg,#71614A,#D9B36C);}
-  .mv-c{background:linear-gradient(165deg,#3D4F3A,#7C8F6D);}
-  .mini-card .name{font-family:var(--serif);font-size:16px;margin-bottom:4px;}
-  .mini-card .row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12.5px;color:#7A7460;}
+  .newsletter{ background:var(--clay); color:var(--white); }
+  .newsletter .wrap{ display:flex; justify-content:space-between; align-items:center; gap:40px; flex-wrap:wrap; }
+  .newsletter h2{ color:var(--white); font-size:30px; max-width:400px; }
+  .nl-form{ display:flex; gap:0; border-bottom:1px solid var(--white); min-width:320px; padding-bottom:10px; }
+  .nl-form input{ background:transparent; border:none; color:var(--white); font-size:15px; flex:1; outline:none; }
+  .nl-form input::placeholder{color:rgba(251,249,244,0.65);}
+  .nl-form button{ background:none;border:none;color:var(--white); font-size:15px; border-bottom:1px solid var(--white); }
 
-  /* ---------- Newsletter ---------- */
-  .newsletter{
-    background:var(--panel);
-    padding:80px 32px;
-    text-align:center;
-  }
-  .newsletter-inner{max-width:520px;margin:0 auto;}
-  .newsletter h3{
-    font-family:var(--serif);
-    font-size:clamp(26px,3vw,34px);
-    margin-bottom:14px;
-  }
-  .newsletter p{color:var(--sage);font-size:15px;margin-bottom:30px;line-height:1.6;}
-  .newsletter-form{
-    display:flex;gap:0;
-    border-bottom:1px solid var(--sage-dim);
-    padding-bottom:12px;
-  }
-  .newsletter-form input{
-    flex:1;background:none;border:none;color:var(--parchment);
-    font-size:15px;padding:6px 4px;
-  }
-  .newsletter-form input::placeholder{color:var(--sage-dim);}
-  .newsletter-form button{
-    font-family:var(--mono);font-size:13px;color:var(--ochre-soft);
-    padding:6px 8px;white-space:nowrap;
-    transition:color 0.2s ease;
-  }
-  .newsletter-form button:hover{color:var(--parchment);}
-  .newsletter-note{font-family:var(--mono);font-size:11.5px;color:var(--sage-dim);margin-top:16px;}
-
-  /* ---------- Footer ---------- */
-  footer{background:var(--forest-deep);padding:72px 32px 28px;}
-  .footer-grid{
-    max-width:1240px;margin:0 auto;
-    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;
-    gap:40px;
-    padding-bottom:56px;
-    border-bottom:1px solid var(--line);
-  }
-  .footer-brand .logo{margin-bottom:16px;}
-  .footer-brand p{color:var(--sage-dim);font-size:14px;line-height:1.6;max-width:260px;}
-  .footer-col h4{
-    font-size:13px;color:var(--sage);
-    margin-bottom:18px;font-weight:500;
-  }
-  .footer-col ul li{margin-bottom:11px;}
-  .footer-col ul li a{color:var(--sage-dim);font-size:14px;transition:color 0.2s ease;}
-  .footer-col ul li a:hover{color:var(--parchment);}
-  .footer-bottom{
-    max-width:1240px;margin:0 auto;
-    padding-top:24px;
-    display:flex;justify-content:space-between;align-items:center;
-    flex-wrap:wrap;gap:12px;
-  }
-  .footer-bottom p{font-family:var(--mono);font-size:12px;color:var(--sage-dim);}
-  .footer-social{display:flex;gap:20px;}
-  .footer-social a{font-family:var(--mono);font-size:12px;color:var(--sage-dim);}
-  .footer-social a:hover{color:var(--parchment);}
+  footer{ padding:64px 0 36px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; padding-bottom:50px; border-bottom:1px solid var(--line); }
+  .foot-grid h4{ font-size:13px; color:#6B6F62; margin-bottom:16px; }
+  .foot-grid ul{list-style:none;}
+  .foot-grid li{margin-bottom:10px; font-size:15px;}
+  .foot-bottom{ display:flex;justify-content:space-between;align-items:center; padding-top:26px; font-size:13px; color:#6B6F62; flex-wrap:wrap; gap:12px; }
+  @media (max-width:900px){ .foot-grid{grid-template-columns:1fr 1fr;} }
 
   /* ---------- Cart drawer ---------- */
-  .cart-drawer{
-    position:fixed;top:0;right:0;height:100vh;width:380px;
-    background:var(--forest);
-    border-left:1px solid var(--line);
-    z-index:200;
-    transform:translateX(100%);
-    transition:transform 0.35s ease;
-    display:flex;flex-direction:column;
+  .overlay{
+    position:fixed; inset:0; background:rgba(32,36,31,0.4);
+    opacity:0; pointer-events:none; transition:opacity .25s ease; z-index:60;
   }
-  .cart-drawer.open{transform:translateX(0);}
-  .cart-head{
-    padding:26px 26px 18px;
-    display:flex;justify-content:space-between;align-items:center;
-    border-bottom:1px solid var(--line);
+  .overlay.open{ opacity:1; pointer-events:auto; }
+  .drawer{
+    position:fixed; top:0; right:0; bottom:0; width:min(420px, 92vw);
+    background:var(--white); z-index:70; display:flex; flex-direction:column;
+    transform:translateX(100%); transition:transform .3s ease;
+    box-shadow:-8px 0 24px rgba(0,0,0,0.08);
   }
-  .cart-head h3{font-family:var(--serif);font-size:20px;}
-  .cart-close{font-size:22px;color:var(--sage);}
-  .cart-body{flex:1;padding:26px;color:var(--sage);font-size:14.5px;line-height:1.7;}
-  .cart-overlay{
-    position:fixed;inset:0;background:rgba(9,14,10,0.5);
-    z-index:150;opacity:0;pointer-events:none;transition:opacity 0.3s ease;
-  }
-  .cart-overlay.open{opacity:1;pointer-events:auto;}
+  .drawer.open{ transform:translateX(0); }
+  .drawer-head{ display:flex; justify-content:space-between; align-items:center; padding:24px 26px; border-bottom:1px solid var(--line); }
+  .drawer-head h3{ font-size:20px; }
+  .drawer-close{ background:none;border:none;font-size:22px;line-height:1;color:var(--ink); }
+  .drawer-items{ flex:1; overflow-y:auto; padding:10px 26px; }
+  .drawer-empty{ padding:40px 0; color:#6B6F62; font-size:15px; }
+  .drawer-item{ display:flex; gap:14px; padding:18px 0; border-bottom:1px solid var(--line); }
+  .drawer-item img{ width:70px; height:88px; object-fit:cover; background:var(--sand); }
+  .di-info{ flex:1; display:flex; flex-direction:column; gap:4px; }
+  .di-name{ font-size:14.5px; font-weight:500; }
+  .di-meta{ font-size:12.5px; color:#6B6F62; }
+  .di-row{ display:flex; justify-content:space-between; align-items:center; margin-top:6px; }
+  .qty-control{ display:flex; align-items:center; border:1px solid var(--line); border-radius:2px; }
+  .qty-control button{ background:none; border:none; width:26px; height:26px; font-size:14px; color:var(--ink); }
+  .qty-control span{ min-width:22px; text-align:center; font-size:13.5px; }
+  .di-remove{ background:none; border:none; font-size:12.5px; color:#6B6F62; text-decoration:underline; }
+  .di-price{ font-size:14px; }
+  .drawer-foot{ padding:22px 26px 28px; border-top:1px solid var(--line); }
+  .df-row{ display:flex; justify-content:space-between; font-size:14.5px; margin-bottom:8px; color:#42473F; }
+  .df-row.total{ font-size:17px; color:var(--ink); font-weight:500; margin-top:12px; margin-bottom:18px; }
+  .drawer-foot .btn-primary{ width:100%; text-align:center; }
 
-  /* ---------- Responsive ---------- */
+  /* ---------- Checkout ---------- */
+  .checkout-wrap{
+    max-width:1080px; margin:0 auto; padding:50px 40px 100px;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:64px;
+  }
+  .co-back{ font-size:14px; color:#4B5045; background:none;border:none; margin-bottom:26px; display:inline-block; }
+  .co-back:hover{ text-decoration:underline; }
+  .co-step-title{ font-size:26px; margin-bottom:6px; }
+  .co-step-sub{ font-size:14px; color:#6B6F62; margin-bottom:30px; }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+  .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+  .field label{ font-size:13px; color:#4B5045; }
+  .field input, .field select{
+    border:1px solid var(--line); background:var(--white);
+    padding:12px 14px; font-size:15px; border-radius:2px; color:var(--ink);
+  }
+  .field input:focus, .field select:focus{ border-color:var(--ink); outline:none; }
+  .field.invalid input, .field.invalid select{ border-color:var(--err); }
+  .field-error{ font-size:12.5px; color:var(--err); display:none; }
+  .field.invalid .field-error{ display:block; }
+  .co-actions{ display:flex; justify-content:space-between; align-items:center; margin-top:30px; gap:16px; }
+  .co-progress{ display:flex; gap:8px; margin-bottom:36px; }
+  .co-progress span{ flex:1; height:2px; background:var(--line); }
+  .co-progress span.done{ background:var(--ink); }
+
+  .summary-box{ background:var(--white); border:1px solid var(--line); padding:28px 26px; align-self:start; position:sticky; top:100px; }
+  .summary-box h4{ font-size:15px; margin-bottom:20px; }
+  .summary-item{ display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); }
+  .summary-item img{ width:54px; height:68px; object-fit:cover; background:var(--sand); }
+  .si-info{ flex:1; }
+  .si-name{ font-size:14px; }
+  .si-meta{ font-size:12px; color:#6B6F62; }
+  .si-price{ font-size:13.5px; margin-top:4px; }
+  .summary-totals{ padding-top:16px; }
+  .summary-totals .df-row{ font-size:14px; }
+
+  .co-review-block{ border:1px solid var(--line); padding:20px 22px; margin-bottom:16px; background:var(--white); }
+  .co-review-block h5{ font-size:13px; color:#6B6F62; margin-bottom:8px; }
+  .co-review-block p{ font-size:15px; }
+  .co-review-block .edit{ font-size:12.5px; text-decoration:underline; color:#4B5045; margin-top:8px; display:inline-block; background:none; border:none; }
+
+  .radio-card{ border:1px solid var(--line); padding:16px 18px; display:flex; align-items:center; gap:12px; margin-bottom:12px; border-radius:2px; }
+  .radio-card input{ accent-color: var(--ink); }
+  .radio-card label{ font-size:15px; flex:1; }
+  .radio-card .rc-price{ font-size:14px; color:#4B5045; }
+
+  @media (max-width:860px){
+    .checkout-wrap{ grid-template-columns:1fr; padding:36px 22px 80px; }
+    .field-row{ grid-template-columns:1fr; }
+    .summary-box{ position:static; order:-1; }
+  }
+
+  /* ---------- Confirmation ---------- */
+  .confirm-wrap{ max-width:640px; margin:0 auto; padding:100px 40px 120px; text-align:center; }
+  .confirm-mark{ font-size:13px; color:var(--moss-dark); margin-bottom:18px; }
+  .confirm-wrap h2{ font-size:34px; margin-bottom:16px; }
+  .confirm-wrap > p{ color:#4B5045; font-size:16px; margin-bottom:40px; }
+  .confirm-box{ border:1px solid var(--line); background:var(--white); padding:30px 30px; text-align:left; margin-bottom:36px; }
+  .confirm-box .cb-row{ display:flex; justify-content:space-between; font-size:14.5px; padding:8px 0; border-bottom:1px solid var(--line); }
+  .confirm-box .cb-row:last-child{ border-bottom:none; }
+
+  .toast{
+    position:fixed; bottom:26px; left:50%; transform:translate(-50%, 20px);
+    background:var(--ink); color:var(--white); padding:14px 22px; font-size:14px;
+    border-radius:2px; opacity:0; pointer-events:none; transition:all .25s ease; z-index:90;
+  }
+  .toast.show{ opacity:1; transform:translate(-50%, 0); }
+
   @media (max-width:900px){
+    .wrap{padding:0 22px;}
+    .nav{padding:18px 22px;}
     .nav-links{display:none;}
-    .menu-toggle{display:block;font-size:14px;font-family:var(--mono);}
-    .hero{grid-template-columns:1fr;padding-top:56px;}
-    .hero-visual{height:340px;order:-1;}
-    .strip-row{flex-wrap:wrap;}
-    .strip-item{flex:0 0 50%;border-bottom:1px solid var(--line-light);}
-    .grid{grid-template-columns:repeat(2,1fr);}
-    .card.tall{grid-row:span 1;}
-    .editorial-grid{grid-template-columns:1fr;gap:40px;}
-    .footer-grid{grid-template-columns:1fr 1fr;}
+    .hero{grid-template-columns:1fr;}
+    .hero-copy{padding:50px 22px;}
+    .hero-media{min-height:360px;}
   }
 </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KT6QS7RZ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 <header>
-  <nav class="nav">
-    <a href="#" class="logo">Under<span>brush</span></a>
-    <ul class="nav-links">
-      <li><a href="#collection">Shop</a></li>
-      <li><a href="#story">Materials</a></li>
-      <li><a href="#bestsellers">Best sellers</a></li>
-      <li><a href="#">Journal</a></li>
-    </ul>
+  <div class="nav">
+    <button class="logo" onclick="goHome()">AMBLE</button>
+    <nav class="nav-links">
+      <a href="#shop" onclick="showView('home')">New</a>
+      <a href="#shop" onclick="showView('home')">Shop all</a>
+      <a href="#materials" onclick="showView('home')">Materials</a>
+      <a href="#reviews" onclick="showView('home')">Reviews</a>
+    </nav>
     <div class="nav-right">
-      <button class="icon-btn menu-toggle" aria-label="Menu">Menu</button>
-      <button class="icon-btn" id="cartOpen" aria-haspopup="true">
-        Bag <span class="cart-count" id="cartCount">0</span>
-      </button>
+      <button aria-label="Search">Search</button>
+      <button class="bag" id="bagBtn" onclick="openCart()" aria-haspopup="dialog">Bag · <span id="bagCount">0</span></button>
     </div>
-  </nav>
+  </div>
 </header>
 
-<main>
-  <!-- HERO -->
-  <section class="hero">
+<!-- ============ HOME VIEW ============ -->
+<main id="view-home" class="view active">
+  <section class="hero" style="padding:0;">
     <div class="hero-copy">
-      <p class="hero-kicker">Autumn / Winter field kit</p>
-      <h1>Clothing built for <em>undergrowth</em>, worn through the city</h1>
-      <p>Weatherproof shells, brushed-cotton layers and packable knits, cut from fabrics that were tested on trail before they ever reached a rack.</p>
+      <div class="hero-kicker">Autumn collection, 04</div>
+      <h1>Clothes that get better with wear, not worse.</h1>
+      <p>AMBLE makes a small range of everyday basics from long-lasting natural fibers — cut generously, finished by hand, built to be repaired rather than replaced.</p>
       <div class="hero-ctas">
-        <a href="#collection" class="btn-primary">Shop the collection</a>
-        <a href="#story" class="btn-ghost">Read about the fabric</a>
+        <a href="#shop" class="btn-primary">Shop the collection</a>
+        <a href="#materials" class="btn-secondary">How we make things</a>
       </div>
     </div>
-    <div class="hero-visual">
-      <svg class="hero-illustration" viewBox="0 0 460 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M60 480 C 60 380, 40 340, 80 260 C 110 200, 90 140, 140 80 C 170 45, 220 30, 260 40" />
-        <path d="M100 480 C 130 420, 120 360, 160 300 C 190 255, 180 200, 220 150" />
-        <path d="M260 40 C 300 20, 350 30, 370 70" />
-        <circle cx="370" cy="90" r="6" />
-        <path d="M140 200 C 170 190, 190 170, 185 145" />
-        <path d="M120 320 C 150 315, 165 295, 158 270" />
-        <rect class="fill-shape" x="230" y="330" width="150" height="190" rx="2"/>
-      </svg>
-      <div class="float-tag">
-        <div class="swatch"></div>
-        <div class="name">Ridge Anorak</div>
-        <div class="meta"><span>UB-014 / OLV</span><span>$228</span></div>
+    <div class="hero-media">
+      <img src="https://picsum.photos/seed/amble-hero/900/1100" alt="Model walking outdoors wearing a heavyweight canvas jacket and wide trousers from the AMBLE autumn collection">
+      <div class="hero-tag">The Canvas Field Jacket, in Moss — this season's opener.</div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="strip-inner">
+      <span>Free repairs for the life of the garment</span>
+      <span>Organic cotton, undyed wool, responsibly tanned leather</span>
+      <span>Shipped in reusable packaging</span>
+      <span>Free repairs for the life of the garment</span>
+      <span>Organic cotton, undyed wool, responsibly tanned leather</span>
+      <span>Shipped in reusable packaging</span>
+    </div>
+  </div>
+
+  <section id="shop">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>New this week</h2>
+        <p>Six pieces, restocked in small batches so nothing sits in a warehouse for long.</p>
+      </div>
+      <div class="grid" id="productGrid"></div>
+    </div>
+  </section>
+
+  <section class="split" style="padding:0;">
+    <div class="split-media">
+      <img src="https://picsum.photos/seed/amble-story/900/900" alt="Close up of hands stitching a canvas jacket seam in a small workshop">
+    </div>
+    <div class="split-copy">
+      <div class="num">Why the prices look like this</div>
+      <h3>A jacket that costs more to make, costs less over ten years.</h3>
+      <p>Most clothing is priced to be replaced. We price ours to be worn for a decade — heavier cloth, reinforced seams, and a repair service that's free for as long as you own the piece. It costs more up front. It's cheaper by year three.</p>
+      <a href="#materials" class="btn-secondary">See how we build a garment</a>
+    </div>
+  </section>
+
+  <section id="materials" class="materials">
+    <div class="wrap">
+      <h2>Three fibers, no filler.</h2>
+      <div class="mat-item">
+        <div class="mat-label">Cotton</div>
+        <p>Grown without synthetic pesticides, woven into a heavy canvas that softens over years of wear instead of thinning out.</p>
+      </div>
+      <div class="mat-item">
+        <div class="mat-label">Wool</div>
+        <p>Left undyed where we can, sourced from farms we've worked with since 2019, spun for warmth without bulk.</p>
+      </div>
+      <div class="mat-item">
+        <div class="mat-label">Leather</div>
+        <p>Tanned with tree bark and minerals rather than chromium, so it wears in — and eventually biodegrades — instead of cracking.</p>
       </div>
     </div>
   </section>
 
-  <!-- CATEGORY STRIP -->
-  <section class="strip">
-    <div class="strip-row">
-      <div class="strip-item"><a href="#"><div class="cat-name">Outerwear</div><div class="cat-count">24 pieces</div></a></div>
-      <div class="strip-item"><a href="#"><div class="cat-name">Base layers</div><div class="cat-count">18 pieces</div></a></div>
-      <div class="strip-item"><a href="#"><div class="cat-name">Trail &amp; pack</div><div class="cat-count">11 pieces</div></a></div>
-      <div class="strip-item"><a href="#"><div class="cat-name">Accessories</div><div class="cat-count">27 pieces</div></a></div>
-    </div>
-  </section>
-
-  <!-- PRODUCT GRID -->
-  <section class="section-light" id="collection">
-    <div class="section-head">
-      <h2>Field-tested this season</h2>
-      <p>Each piece is worn on actual terrain for a full season before it's approved for production.</p>
-    </div>
-    <div class="grid">
-      <div class="card tall">
-        <div class="card-visual tex-1">
-          <button class="quick-add" data-name="Ridge Anorak" data-price="228">Add to bag — $228</button>
-        </div>
-        <div class="card-info">
-          <div><div class="name">Ridge Anorak</div><div class="code">UB-014 / Olive</div></div>
-          <div class="price">$228</div>
-        </div>
+  <section id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Worn daily, for years</h2>
+        <p>Notes from people who've had a piece long enough to know if it holds up.</p>
       </div>
-      <div class="card">
-        <div class="card-visual tex-2">
-          <button class="quick-add" data-name="Brushed Flannel Shirt" data-price="94">Add to bag — $94</button>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:36px;">
+        <div style="border-top:1px solid var(--line);padding-top:22px;">
+          <p style="font-size:16px;margin-bottom:16px;color:#33372E;">I've had the field jacket for three winters. The cuffs are starting to soften but nothing has torn or come loose. It's the only coat I own now.</p>
+          <div style="font-size:13px;color:#6B6F62;">Priya N. — owns the Canvas Field Jacket, since 2023</div>
         </div>
-        <div class="card-info">
-          <div><div class="name">Brushed Flannel Shirt</div><div class="code">UB-027 / Clay</div></div>
-          <div class="price">$94</div>
+        <div style="border-top:1px solid var(--line);padding-top:22px;">
+          <p style="font-size:16px;margin-bottom:16px;color:#33372E;">Sent a trouser back for a torn belt loop and it came back mended, not replaced, in under two weeks. That alone earned my next order.</p>
+          <div style="font-size:13px;color:#6B6F62;">Dev R. — owns the Drape Trouser, since 2024</div>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-visual tex-3">
-          <button class="quick-add" data-name="Moss Wool Sweater" data-price="132">Add to bag — $132</button>
-        </div>
-        <div class="card-info">
-          <div><div class="name">Moss Wool Sweater</div><div class="code">UB-031 / Fern</div></div>
-          <div class="price">$132</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-visual tex-4">
-          <button class="quick-add" data-name="Canvas Field Pant" data-price="118">Add to bag — $118</button>
-        </div>
-        <div class="card-info">
-          <div><div class="name">Canvas Field Pant</div><div class="code">UB-009 / Sand</div></div>
-          <div class="price">$118</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-visual tex-3">
-          <button class="quick-add" data-name="Packable Vest" data-price="86">Add to bag — $86</button>
-        </div>
-        <div class="card-info">
-          <div><div class="name">Packable Vest</div><div class="code">UB-042 / Fern</div></div>
-          <div class="price">$86</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-visual tex-2">
-          <button class="quick-add" data-name="Waxed Trail Cap" data-price="42">Add to bag — $42</button>
-        </div>
-        <div class="card-info">
-          <div><div class="name">Waxed Trail Cap</div><div class="code">UB-055 / Clay</div></div>
-          <div class="price">$42</div>
+        <div style="border-top:1px solid var(--line);padding-top:22px;">
+          <p style="font-size:16px;margin-bottom:16px;color:#33372E;">Heavier than I expected when it arrived, which turned out to be the point. It doesn't move like fast fashion, and it doesn't wear out like it either.</p>
+          <div style="font-size:13px;color:#6B6F62;">Meera K. — owns the Ribbed Crewneck, since 2022</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EDITORIAL -->
-  <section class="editorial" id="story">
-    <div class="editorial-grid">
-      <blockquote>
-        "We stopped calling it activewear the day we realized most of it never left the office."
-        <cite>— Founding note, 2016</cite>
-      </blockquote>
-      <div class="editorial-side">
-        <p>Underbrush started as a two-person pattern shop making shells for a trail-running club that kept complaining about everything on the market. Nine years later, the brief hasn't changed: make it work in real weather first, and let it look good as a result of that, not instead of it.</p>
-        <ul class="fact-list">
-          <li><span>Recycled shell fabric</span><span>78%</span></li>
-          <li><span>Garments field-tested</span><span>100%</span></li>
-          <li><span>Repair program</span><span>Lifetime</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- BEST SELLERS -->
-  <section class="bestsellers" id="bestsellers">
-    <div class="section-head">
-      <h2>What people keep reordering</h2>
-      <p>The pieces that come back into every seasonal drop, by request.</p>
-    </div>
-    <div class="scroll-row">
-      <div class="mini-card">
-        <div class="mini-visual mv-a"></div>
-        <div class="name">Trailhead Fleece</div>
-        <div class="row"><span>UB-061</span><span>$118</span></div>
-      </div>
-      <div class="mini-card">
-        <div class="mini-visual mv-b"></div>
-        <div class="name">Dune Chino</div>
-        <div class="row"><span>UB-019</span><span>$104</span></div>
-      </div>
-      <div class="mini-card">
-        <div class="mini-visual mv-c"></div>
-        <div class="name">Understory Jacket</div>
-        <div class="row"><span>UB-003</span><span>$246</span></div>
-      </div>
-      <div class="mini-card">
-        <div class="mini-visual mv-a"></div>
-        <div class="name">Ridge Beanie</div>
-        <div class="row"><span>UB-071</span><span>$34</span></div>
-      </div>
-      <div class="mini-card">
-        <div class="mini-visual mv-b"></div>
-        <div class="name">Camp Overshirt</div>
-        <div class="row"><span>UB-024</span><span>$98</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER -->
   <section class="newsletter">
-    <div class="newsletter-inner">
-      <h3>Get word before a drop sells out</h3>
-      <p>One email a month. Early access to restocks, and the occasional fabric note from the workshop.</p>
-      <form class="newsletter-form" id="newsForm">
-        <input type="email" placeholder="you@email.com" required aria-label="Email address">
-        <button type="submit">Subscribe</button>
+    <div class="wrap">
+      <h2>Get notified before small batches sell out.</h2>
+      <form class="nl-form" onsubmit="event.preventDefault(); showToast('Subscribed. Welcome to AMBLE.');this.reset();">
+        <input type="email" placeholder="Your email address" required aria-label="Email address">
+        <button type="submit">Sign up</button>
       </form>
-      <p class="newsletter-note" id="newsNote">No spam. Unsubscribe any time.</p>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="#" class="logo">Under<span>brush</span></a>
-      <p>Weatherproof clothing designed on trail and finished in a small workshop, one season at a time.</p>
+<!-- ============ CHECKOUT VIEW ============ -->
+<main id="view-checkout" class="view">
+  <div class="checkout-wrap">
+    <div>
+      <button class="co-back" onclick="checkoutBack()">&larr; Back</button>
+
+      <div class="co-progress">
+        <span id="prog-1" class="done"></span>
+        <span id="prog-2"></span>
+        <span id="prog-3"></span>
+      </div>
+
+      <!-- Step 1: Shipping -->
+      <div id="step-shipping">
+        <div class="co-step-title">Shipping address</div>
+        <div class="co-step-sub">We'll only use this to deliver your order and send tracking updates.</div>
+        <form id="shippingForm" novalidate>
+          <div class="field-row">
+            <div class="field" id="f-firstName">
+              <label for="firstName">First name</label>
+              <input id="firstName" name="firstName" type="text" autocomplete="given-name" required>
+              <span class="field-error">Enter your first name.</span>
+            </div>
+            <div class="field" id="f-lastName">
+              <label for="lastName">Last name</label>
+              <input id="lastName" name="lastName" type="text" autocomplete="family-name" required>
+              <span class="field-error">Enter your last name.</span>
+            </div>
+          </div>
+          <div class="field" id="f-email">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+            <span class="field-error">Enter a valid email address.</span>
+          </div>
+          <div class="field" id="f-address">
+            <label for="address">Street address</label>
+            <input id="address" name="address" type="text" autocomplete="address-line1" required>
+            <span class="field-error">Enter your street address.</span>
+          </div>
+          <div class="field-row">
+            <div class="field" id="f-city">
+              <label for="city">City</label>
+              <input id="city" name="city" type="text" autocomplete="address-level2" required>
+              <span class="field-error">Enter your city.</span>
+            </div>
+            <div class="field" id="f-state">
+              <label for="state">State / Province</label>
+              <input id="state" name="state" type="text" autocomplete="address-level1" required>
+              <span class="field-error">Enter your state or province.</span>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field" id="f-zip">
+              <label for="zip">Postal code</label>
+              <input id="zip" name="zip" type="text" autocomplete="postal-code" required>
+              <span class="field-error">Enter a valid postal code.</span>
+            </div>
+            <div class="field" id="f-country">
+              <label for="country">Country</label>
+              <select id="country" name="country" required>
+                <option value="">Select country</option>
+                <option>India</option>
+                <option>United States</option>
+                <option>United Kingdom</option>
+                <option>Canada</option>
+                <option>Australia</option>
+                <option>Germany</option>
+              </select>
+              <span class="field-error">Select your country.</span>
+            </div>
+          </div>
+          <div class="co-actions">
+            <span></span>
+            <button type="submit" class="btn-primary">Continue to shipping method</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 2: Delivery + Payment -->
+      <div id="step-payment" style="display:none;">
+        <div class="co-step-title">Delivery &amp; payment</div>
+        <div class="co-step-sub">Choose how fast you want it, and how you'd like to pay.</div>
+
+        <h5 style="font-size:13px;color:#6B6F62;margin-bottom:12px;">Delivery method</h5>
+        <div class="radio-card">
+          <input type="radio" name="shipMethod" id="ship-standard" value="0" checked onchange="updateTotals()">
+          <label for="ship-standard">Standard — 5 to 7 business days</label>
+          <span class="rc-price">Free</span>
+        </div>
+        <div class="radio-card">
+          <input type="radio" name="shipMethod" id="ship-express" value="18" onchange="updateTotals()">
+          <label for="ship-express">Express — 2 business days</label>
+          <span class="rc-price">$18.00</span>
+        </div>
+
+        <h5 style="font-size:13px;color:#6B6F62;margin:24px 0 12px;">Payment details</h5>
+        <form id="paymentForm" novalidate>
+          <div class="field" id="f-cardName">
+            <label for="cardName">Name on card</label>
+            <input id="cardName" name="cardName" type="text" autocomplete="cc-name" required>
+            <span class="field-error">Enter the name on your card.</span>
+          </div>
+          <div class="field" id="f-cardNumber">
+            <label for="cardNumber">Card number</label>
+            <input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" autocomplete="cc-number" required>
+            <span class="field-error">Enter a valid 16-digit card number.</span>
+          </div>
+          <div class="field-row">
+            <div class="field" id="f-cardExpiry">
+              <label for="cardExpiry">Expiry (MM/YY)</label>
+              <input id="cardExpiry" name="cardExpiry" type="text" placeholder="MM/YY" maxlength="5" autocomplete="cc-exp" required>
+              <span class="field-error">Enter a valid expiry date.</span>
+            </div>
+            <div class="field" id="f-cardCvc">
+              <label for="cardCvc">CVC</label>
+              <input id="cardCvc" name="cardCvc" type="text" inputmode="numeric" maxlength="4" placeholder="123" autocomplete="cc-csc" required>
+              <span class="field-error">Enter a valid CVC.</span>
+            </div>
+          </div>
+          <p style="font-size:12.5px;color:#6B6F62;margin-top:-4px;margin-bottom:6px;">This is a demo store — no real payment is processed and no card details are transmitted or stored.</p>
+          <div class="co-actions">
+            <button type="button" class="btn-secondary" onclick="goToStep(1)">&larr; Back to shipping</button>
+            <button type="submit" class="btn-primary">Review order</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 3: Review -->
+      <div id="step-review" style="display:none;">
+        <div class="co-step-title">Review your order</div>
+        <div class="co-step-sub">Check everything looks right before you place your order.</div>
+
+        <div class="co-review-block">
+          <h5>Contact &amp; shipping</h5>
+          <p id="review-shipping"></p>
+          <button class="edit" onclick="goToStep(1)">Edit</button>
+        </div>
+        <div class="co-review-block">
+          <h5>Delivery method</h5>
+          <p id="review-delivery"></p>
+          <button class="edit" onclick="goToStep(2)">Edit</button>
+        </div>
+        <div class="co-review-block">
+          <h5>Payment</h5>
+          <p id="review-payment"></p>
+          <button class="edit" onclick="goToStep(2)">Edit</button>
+        </div>
+
+        <div class="co-actions">
+          <button type="button" class="btn-secondary" onclick="goToStep(2)">&larr; Back to payment</button>
+          <button type="button" class="btn-primary" id="placeOrderBtn" onclick="placeOrder()">Place order</button>
+        </div>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Shop</h4>
-      <ul>
-        <li><a href="#">Outerwear</a></li>
-        <li><a href="#">Base layers</a></li>
-        <li><a href="#">Trail &amp; pack</a></li>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">Sale</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Help</h4>
-      <ul>
-        <li><a href="#">Sizing guide</a></li>
-        <li><a href="#">Shipping &amp; returns</a></li>
-        <li><a href="#">Repair program</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Journal</a></li>
-        <li><a href="#">Materials</a></li>
-        <li><a href="#">Careers</a></li>
-      </ul>
-    </div>
+
+    <aside class="summary-box">
+      <h4>Order summary</h4>
+      <div id="summaryItems"></div>
+      <div class="summary-totals">
+        <div class="df-row"><span>Subtotal</span><span id="sumSubtotal">$0.00</span></div>
+        <div class="df-row"><span>Shipping</span><span id="sumShipping">Free</span></div>
+        <div class="df-row"><span>Estimated tax</span><span id="sumTax">$0.00</span></div>
+        <div class="df-row total"><span>Total</span><span id="sumTotal">$0.00</span></div>
+      </div>
+    </aside>
   </div>
-  <div class="footer-bottom">
-    <p>© 2026 Underbrush Workshop. All rights reserved.</p>
-    <div class="footer-social">
-      <a href="#">Instagram</a>
-      <a href="#">Journal</a>
-      <a href="#">Pinterest</a>
+</main>
+
+<!-- ============ CONFIRMATION VIEW ============ -->
+<main id="view-confirm" class="view">
+  <div class="confirm-wrap">
+    <div class="confirm-mark">Order placed</div>
+    <h2>Thank you — it's on its way to being made.</h2>
+    <p>A confirmation has been sent to <span id="confirmEmail">your email</span>. You'll get a shipping notification once your order leaves the workshop.</p>
+    <div class="confirm-box">
+      <div class="cb-row"><span>Order number</span><span id="confirmOrderId">—</span></div>
+      <div class="cb-row"><span>Shipping to</span><span id="confirmShipTo">—</span></div>
+      <div class="cb-row"><span>Delivery method</span><span id="confirmDelivery">—</span></div>
+      <div class="cb-row"><span>Total charged</span><span id="confirmTotal">—</span></div>
+    </div>
+    <button class="btn-primary" onclick="goHome()">Continue shopping</button>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div style="margin-bottom:14px;font-family:'Fraunces',serif;font-size:22px;font-weight:600;">AMBLE</div>
+        <p style="max-width:260px; color:#4B5045; font-size:14.5px;">Small-batch everyday clothing, made to be repaired rather than replaced.</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#" onclick="showView('home')">New arrivals</a></li>
+          <li><a href="#" onclick="showView('home')">Outerwear</a></li>
+          <li><a href="#" onclick="showView('home')">Trousers</a></li>
+          <li><a href="#" onclick="showView('home')">Footwear</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="#materials" onclick="showView('home')">Our materials</a></li>
+          <li><a href="#">Repair service</a></li>
+          <li><a href="#">Workshop</a></li>
+          <li><a href="#">Journal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Size guide</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AMBLE. All rights reserved.</span>
+      <span>Bengaluru · Made to last</span>
     </div>
   </div>
 </footer>
 
-<div class="cart-overlay" id="cartOverlay"></div>
-<div class="cart-drawer" id="cartDrawer" aria-hidden="true">
-  <div class="cart-head">
+<!-- ============ CART DRAWER ============ -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="drawer" id="drawer" role="dialog" aria-label="Shopping bag">
+  <div class="drawer-head">
     <h3>Your bag</h3>
-    <button class="cart-close" id="cartClose" aria-label="Close bag">&times;</button>
+    <button class="drawer-close" onclick="closeCart()" aria-label="Close bag">&times;</button>
   </div>
-  <div class="cart-body" id="cartBody">
-    Your bag is empty. Add a piece from the collection to see it here.
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="df-row"><span>Subtotal</span><span id="drawerSubtotal">$0.00</span></div>
+    <div class="df-row total"><span>Estimated total</span><span id="drawerTotal">$0.00</span></div>
+    <button class="btn-primary" id="checkoutBtn" onclick="startCheckout()">Checkout</button>
   </div>
 </div>
 
-<script>
-  // Cart drawer
-  const cartOpen = document.getElementById('cartOpen');
-  const cartClose = document.getElementById('cartClose');
-  const cartDrawer = document.getElementById('cartDrawer');
-  const cartOverlay = document.getElementById('cartOverlay');
-  const cartCount = document.getElementById('cartCount');
-  const cartBody = document.getElementById('cartBody');
-  let items = [];
+<div class="toast" id="toast"></div>
 
+<script>
+  /* ---------------- Product data ---------------- */
+  const PRODUCTS = [
+    { id:'p1', name:'Canvas Field Jacket', meta:'Moss · Organic cotton canvas', price:228, img:'https://picsum.photos/seed/amble-1/500/650', sizes:['XS','S','M','L','XL'] },
+    { id:'p2', name:'Drape Trouser', meta:'Undyed · Brushed wool', price:164, img:'https://picsum.photos/seed/amble-2/500/650', sizes:['28','30','32','34','36'] },
+    { id:'p3', name:'Ribbed Crewneck', meta:'Clay · Cotton-wool blend', price:118, img:'https://picsum.photos/seed/amble-3/500/650', sizes:['XS','S','M','L','XL'] },
+    { id:'p4', name:'Ankle Boot', meta:'Walnut · Vegetable-tanned leather', price:286, img:'https://picsum.photos/seed/amble-4/500/650', sizes:['7','8','9','10','11'] },
+    { id:'p5', name:'Selvedge Work Shirt', meta:'Sand · Heavy cotton twill', price:132, img:'https://picsum.photos/seed/amble-5/500/650', sizes:['XS','S','M','L','XL'] },
+    { id:'p6', name:'Wool Overcoat', meta:'Ink · Double-faced wool', price:342, img:'https://picsum.photos/seed/amble-6/500/650', sizes:['S','M','L','XL'] }
+  ];
+
+  /* ---------------- State (in-memory only) ---------------- */
+  let cart = []; // { id, size, qty }
+  let shippingInfo = null;
+  let paymentInfo = null;
+  let shipMethodCost = 0;
+
+  /* ---------------- Rendering products ---------------- */
+  function renderProducts(){
+    const grid = document.getElementById('productGrid');
+    grid.innerHTML = PRODUCTS.map(p => `
+      <div class="card">
+        <div class="card-media"><img src="${p.img}" alt="${p.name} — ${p.meta}"></div>
+        <div class="card-body">
+          <button class="card-name" onclick="quickAdd('${p.id}')">${p.name}</button>
+          <div class="card-meta">${p.meta}</div>
+          <div class="card-price">$${p.price.toFixed(2)}</div>
+          <button class="card-add" onclick="quickAdd('${p.id}')">Add to bag</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function quickAdd(id){
+    const product = PRODUCTS.find(p => p.id === id);
+    const size = product.sizes[Math.floor(product.sizes.length/2)];
+    addToCart(id, size, 1);
+    showToast(`${product.name} added to your bag`);
+  }
+
+  function addToCart(id, size, qty){
+    const existing = cart.find(item => item.id === id && item.size === size);
+    if(existing){ existing.qty += qty; }
+    else { cart.push({ id, size, qty }); }
+    renderCartCount();
+    renderDrawer();
+  }
+
+  function changeQty(id, size, delta){
+    const item = cart.find(i => i.id === id && i.size === size);
+    if(!item) return;
+    item.qty += delta;
+    if(item.qty <= 0){ cart = cart.filter(i => !(i.id===id && i.size===size)); }
+    renderCartCount();
+    renderDrawer();
+  }
+
+  function removeFromCart(id, size){
+    cart = cart.filter(i => !(i.id===id && i.size===size));
+    renderCartCount();
+    renderDrawer();
+  }
+
+  function cartLines(){
+    return cart.map(item => {
+      const p = PRODUCTS.find(pr => pr.id === item.id);
+      return { ...item, product:p, lineTotal: p.price * item.qty };
+    });
+  }
+
+  function cartSubtotal(){
+    return cartLines().reduce((sum, l) => sum + l.lineTotal, 0);
+  }
+
+  function renderCartCount(){
+    const count = cart.reduce((n,i) => n + i.qty, 0);
+    document.getElementById('bagCount').textContent = count;
+  }
+
+  function renderDrawer(){
+    const container = document.getElementById('drawerItems');
+    const lines = cartLines();
+    if(lines.length === 0){
+      container.innerHTML = `<div class="drawer-empty">Your bag is empty. Add something built to last.</div>`;
+    } else {
+      container.innerHTML = lines.map(l => `
+        <div class="drawer-item">
+          <img src="${l.product.img}" alt="${l.product.name}">
+          <div class="di-info">
+            <div class="di-name">${l.product.name}</div>
+            <div class="di-meta">Size ${l.size}</div>
+            <div class="di-row">
+              <div class="qty-control">
+                <button onclick="changeQty('${l.id}','${l.size}',-1)" aria-label="Decrease quantity">&minus;</button>
+                <span>${l.qty}</span>
+                <button onclick="changeQty('${l.id}','${l.size}',1)" aria-label="Increase quantity">&plus;</button>
+              </div>
+              <span class="di-price">$${l.lineTotal.toFixed(2)}</span>
+            </div>
+            <button class="di-remove" onclick="removeFromCart('${l.id}','${l.size}')">Remove</button>
+          </div>
+        </div>
+      `).join('');
+    }
+    const subtotal = cartSubtotal();
+    document.getElementById('drawerSubtotal').textContent = `$${subtotal.toFixed(2)}`;
+    document.getElementById('drawerTotal').textContent = `$${subtotal.toFixed(2)}`;
+    document.getElementById('checkoutBtn').disabled = lines.length === 0;
+  }
+
+  /* ---------------- Cart drawer open/close ---------------- */
   function openCart(){
-    cartDrawer.classList.add('open');
-    cartOverlay.classList.add('open');
-    cartDrawer.setAttribute('aria-hidden','false');
+    document.getElementById('overlay').classList.add('open');
+    document.getElementById('drawer').classList.add('open');
   }
   function closeCart(){
-    cartDrawer.classList.remove('open');
-    cartOverlay.classList.remove('open');
-    cartDrawer.setAttribute('aria-hidden','true');
-  }
-  cartOpen.addEventListener('click', openCart);
-  cartClose.addEventListener('click', closeCart);
-  cartOverlay.addEventListener('click', closeCart);
-
-  function renderCart(){
-    cartCount.textContent = items.length;
-    if(items.length === 0){
-      cartBody.innerHTML = "Your bag is empty. Add a piece from the collection to see it here.";
-      return;
-    }
-    const total = items.reduce((sum, i) => sum + i.price, 0);
-    cartBody.innerHTML = items.map(i =>
-      `<div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);">
-        <span>${i.name}</span><span style="font-family:var(--mono)">$${i.price}</span>
-      </div>`
-    ).join('') + `<div style="display:flex;justify-content:space-between;padding-top:18px;font-family:var(--mono);color:var(--parchment)">
-        <span>Subtotal</span><span>$${total}</span>
-      </div>`;
+    document.getElementById('overlay').classList.remove('open');
+    document.getElementById('drawer').classList.remove('open');
   }
 
-  document.querySelectorAll('.quick-add').forEach(btn => {
-    btn.addEventListener('click', () => {
-      items.push({ name: btn.dataset.name, price: Number(btn.dataset.price) });
-      renderCart();
-      openCart();
-    });
-  });
+  /* ---------------- View switching ---------------- */
+  function showView(name){
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById('view-' + name).classList.add('active');
+    window.scrollTo(0,0);
+  }
+  function goHome(){ showView('home'); }
 
-  // Newsletter
-  const newsForm = document.getElementById('newsForm');
-  const newsNote = document.getElementById('newsNote');
-  newsForm.addEventListener('submit', (e) => {
+  function startCheckout(){
+    if(cart.length === 0) return;
+    closeCart();
+    showView('checkout');
+    goToStep(1);
+    renderSummary();
+  }
+
+  function checkoutBack(){
+    showView('home');
+  }
+
+  /* ---------------- Checkout steps ---------------- */
+  function goToStep(step){
+    document.getElementById('step-shipping').style.display = step===1 ? 'block':'none';
+    document.getElementById('step-payment').style.display = step===2 ? 'block':'none';
+    document.getElementById('step-review').style.display = step===3 ? 'block':'none';
+    document.getElementById('prog-1').className = step>=1 ? 'done':'';
+    document.getElementById('prog-2').className = step>=2 ? 'done':'';
+    document.getElementById('prog-3').className = step>=3 ? 'done':'';
+    window.scrollTo(0,0);
+  }
+
+  function setFieldError(fieldId, isInvalid){
+    const el = document.getElementById(fieldId);
+    if(el) el.classList.toggle('invalid', isInvalid);
+  }
+
+  document.getElementById('shippingForm').addEventListener('submit', function(e){
     e.preventDefault();
-    newsNote.textContent = "You're on the list. First note lands next drop.";
-    newsForm.querySelector('input').value = '';
+    const f = e.target;
+    let valid = true;
+    const required = ['firstName','lastName','email','address','city','state','zip','country'];
+    required.forEach(name => {
+      const val = f[name].value.trim();
+      let bad = val === '';
+      if(name === 'email' && val !== ''){
+        bad = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+      }
+      setFieldError('f-' + name, bad);
+      if(bad) valid = false;
+    });
+    if(!valid) return;
+    shippingInfo = {
+      firstName:f.firstName.value.trim(), lastName:f.lastName.value.trim(),
+      email:f.email.value.trim(), address:f.address.value.trim(),
+      city:f.city.value.trim(), state:f.state.value.trim(),
+      zip:f.zip.value.trim(), country:f.country.value
+    };
+    goToStep(2);
   });
+
+  document.getElementById('paymentForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const f = e.target;
+    let valid = true;
+
+    const nameBad = f.cardName.value.trim() === '';
+    setFieldError('f-cardName', nameBad); if(nameBad) valid=false;
+
+    const numDigits = f.cardNumber.value.replace(/\s/g,'');
+    const numBad = !/^\d{16}$/.test(numDigits);
+    setFieldError('f-cardNumber', numBad); if(numBad) valid=false;
+
+    const expBad = !/^(0[1-9]|1[0-2])\/\d{2}$/.test(f.cardExpiry.value.trim());
+    setFieldError('f-cardExpiry', expBad); if(expBad) valid=false;
+
+    const cvcBad = !/^\d{3,4}$/.test(f.cardCvc.value.trim());
+    setFieldError('f-cardCvc', cvcBad); if(cvcBad) valid=false;
+
+    if(!valid) return;
+    paymentInfo = {
+      cardName:f.cardName.value.trim(),
+      last4: numDigits.slice(-4)
+    };
+    shipMethodCost = parseFloat(document.querySelector('input[name="shipMethod"]:checked').value);
+    populateReview();
+    updateTotals();
+    goToStep(3);
+  });
+
+  // auto-format card number & expiry
+  document.getElementById('cardNumber').addEventListener('input', function(e){
+    let v = e.target.value.replace(/\D/g,'').slice(0,16);
+    e.target.value = v.replace(/(.{4})/g,'$1 ').trim();
+  });
+  document.getElementById('cardExpiry').addEventListener('input', function(e){
+    let v = e.target.value.replace(/\D/g,'').slice(0,4);
+    if(v.length >= 3) v = v.slice(0,2) + '/' + v.slice(2);
+    e.target.value = v;
+  });
+
+  function populateReview(){
+    document.getElementById('review-shipping').textContent =
+      `${shippingInfo.firstName} ${shippingInfo.lastName} — ${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state} ${shippingInfo.zip}, ${shippingInfo.country} (${shippingInfo.email})`;
+    const methodEl = document.querySelector('input[name="shipMethod"]:checked');
+    const methodLabel = methodEl.id === 'ship-express' ? 'Express — 2 business days ($18.00)' : 'Standard — 5 to 7 business days (Free)';
+    document.getElementById('review-delivery').textContent = methodLabel;
+    document.getElementById('review-payment').textContent = `Card ending in ${paymentInfo.last4}, billed to ${paymentInfo.cardName}`;
+  }
+
+  /* ---------------- Totals ---------------- */
+  function computeTotals(){
+    const subtotal = cartSubtotal();
+    const tax = subtotal * 0.08;
+    const shipping = shipMethodCost;
+    const total = subtotal + tax + shipping;
+    return { subtotal, tax, shipping, total };
+  }
+
+  function updateTotals(){
+    const methodEl = document.querySelector('input[name="shipMethod"]:checked');
+    shipMethodCost = methodEl ? parseFloat(methodEl.value) : 0;
+    const t = computeTotals();
+    document.getElementById('sumSubtotal').textContent = `$${t.subtotal.toFixed(2)}`;
+    document.getElementById('sumShipping').textContent = t.shipping === 0 ? 'Free' : `$${t.shipping.toFixed(2)}`;
+    document.getElementById('sumTax').textContent = `$${t.tax.toFixed(2)}`;
+    document.getElementById('sumTotal').textContent = `$${t.total.toFixed(2)}`;
+  }
+
+  function renderSummary(){
+    const lines = cartLines();
+    document.getElementById('summaryItems').innerHTML = lines.map(l => `
+      <div class="summary-item">
+        <img src="${l.product.img}" alt="${l.product.name}">
+        <div class="si-info">
+          <div class="si-name">${l.product.name}</div>
+          <div class="si-meta">Size ${l.size} · Qty ${l.qty}</div>
+          <div class="si-price">$${l.lineTotal.toFixed(2)}</div>
+        </div>
+      </div>
+    `).join('');
+    updateTotals();
+  }
+
+  /* ---------------- Place order ---------------- */
+  function placeOrder(){
+    const btn = document.getElementById('placeOrderBtn');
+    btn.disabled = true;
+    btn.textContent = 'Placing order…';
+    setTimeout(() => {
+      const t = computeTotals();
+      const orderId = 'AMB-' + Math.floor(100000 + Math.random()*900000);
+      document.getElementById('confirmEmail').textContent = shippingInfo.email;
+      document.getElementById('confirmOrderId').textContent = orderId;
+      document.getElementById('confirmShipTo').textContent = `${shippingInfo.city}, ${shippingInfo.country}`;
+      const methodEl = document.querySelector('input[name="shipMethod"]:checked');
+      document.getElementById('confirmDelivery').textContent = methodEl.id === 'ship-express' ? 'Express (2 business days)' : 'Standard (5–7 business days)';
+      document.getElementById('confirmTotal').textContent = `$${t.total.toFixed(2)}`;
+
+      cart = [];
+      shippingInfo = null; paymentInfo = null; shipMethodCost = 0;
+      renderCartCount();
+      renderDrawer();
+      document.getElementById('shippingForm').reset();
+      document.getElementById('paymentForm').reset();
+      btn.disabled = false;
+      btn.textContent = 'Place order';
+
+      showView('confirm');
+    }, 700);
+  }
+
+  /* ---------------- Toast ---------------- */
+  let toastTimer;
+  function showToast(msg){
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+  }
+
+  /* ---------------- Init ---------------- */
+  renderProducts();
+  renderCartCount();
+  renderDrawer();
 </script>
 
 </body>
